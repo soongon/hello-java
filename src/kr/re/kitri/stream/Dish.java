@@ -1,5 +1,6 @@
 package kr.re.kitri.stream;
 
+// Value Object (VO), Model, Domain Object,
 public class Dish {
     private String name;
     private boolean vegeterian;

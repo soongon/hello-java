@@ -24,7 +24,7 @@ public class DishHandlerModern {
         List<String> result = dishes.stream()
                 .filter(dish -> dish.getCalrories() <= 400)
                 .sorted((a, b) -> b.getCalrories() - a.getCalrories())
-                .map(Dish::getName)
+                .map(dish1 -> dish1.getName())
                 .collect(Collectors.toList());
 
         System.out.println(result.subList(0, 3));
