@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.OptionalDouble;
+import java.util.stream.LongStream;
 
 public class SalaryQuiz {
     public static void main(String[] args) throws IOException {
@@ -22,7 +23,7 @@ public class SalaryQuiz {
 
         Path file = Path.of("Salaries.csv");
 
-        OptionalDouble nl = Files.lines(file)
+        var nl = Files.lines(file)
                 .skip(1)
                 //.peek(System.out::println)
                 .map(e -> {
@@ -32,10 +33,10 @@ public class SalaryQuiz {
                 .filter(e -> e.getLeague().equals("NL"))
                 .sorted((a, b) -> (int) (b.getSalary() - a.getSalary()))
                 .mapToLong(e -> e.getSalary())  // Stream<Salary> --> Stream<Long> -->
-                .limit(30)
-                .average();
+                .limit(30);
+        //.average();
 
-        System.out.println(nl.getAsDouble());
+        // System.out.println(nl.getAsDouble());
 
         long nya = Files.lines(file)
                 .skip(1)
